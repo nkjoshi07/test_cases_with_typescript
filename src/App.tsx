@@ -29,12 +29,27 @@ class App extends React.Component<any, iState> {
     }
   }
 
-  handleClick = (values: any) => {
+  handleClick = (values: any, { resetForm }: any) => {
     console.log("values", values)
-    this.setState({ loginData: [...this.state.loginData, values], initialvalues: values })
+    this.setState({ loginData: [...this.state.loginData, values] })
+    resetForm()
   }
 
+  // handleReset = (resetForm: any) => {
+  //   console.log("initialvalues", this.state.initialvalues)
+  //   if (this.state.initialvalues.email && this.state.initialvalues.password) {
+  //     console.log("true")
+  //     resetForm()
+  //     this.setState({
+  //       initialvalues: {
+  //         email: "",
+  //         password: ""
+  //       }
+  //     })
+  //   }
+  // }
   render() {
+    console.log("loginData", this.state.loginData)
     return (
       <>
         <Formik
@@ -48,29 +63,40 @@ class App extends React.Component<any, iState> {
           })}
           data-testid="formikTest"
           onSubmit={this.handleClick}>
-          <Form>
-            <Stack justifyContent="center" alignItems="center" direction="column">
-              <Typography sx={{ textAlign: "center" }}>Login form</Typography>
-              <Stack justifyContent="center" alignItems="center" sx={{ my: 3 }} direction="row">
-                <label htmlFor='email' id='email-label'>
-                  Email:
-                </label>
-                <Field name='email' id="input-email" type='email' />
-                <ErrorMessage name='email' id='email-error' component="div" />
+          {/* {({ resetForm }) => ( */}
+            <Form>
+              <Stack justifyContent="center" alignItems="center" direction="column">
+                <Typography sx={{ textAlign: "center" }}>Login form</Typography>
+                <Stack justifyContent="center" alignItems="center" sx={{ my: 3 }} direction="row">
+                  <label htmlFor='email' id='email-label'>
+                    Email:
+                  </label>
+                  <Field name='email' id="input-email" type='email' />
+                  <ErrorMessage name='email' id='email-error' component="div" />
+                </Stack>
+                <Stack justifyContent="center" alignItems="center" sx={{ my: 3 }} direction="row">
+                  <label htmlFor='password' id='password-label'>
+                    password:
+                  </label>
+                  <Field name='password' id="input-password" type='password' />
+                  <ErrorMessage name='password' id='password-error' component="div" />
+                </Stack>
+                <Button id='submit' type='submit' variant="contained" color="primary">
+                  Save
+                </Button>
               </Stack>
-              <Stack justifyContent="center" alignItems="center" sx={{ my: 3 }} direction="row">
-                <label htmlFor='password' id='password-label'>
-                  password:
-                </label>
-                <Field name='password' id="input-password" type='password' />
-                <ErrorMessage name='password' id='password-error' component="div" />
-              </Stack>
-              <Button id='submit' type='submit' variant="contained" color="primary">
-                Save
-              </Button>
-            </Stack>
-          </Form>
+            </Form>
         </Formik>
+        {this.state.loginData.length > 0 ?
+          (this.state.loginData.map((login) =>
+            <Stack justifyContent="center" alignItems="center" sx={{ m: 5 }}>
+              <Typography>{login.email}</Typography>
+              <Typography>{login.password}</Typography>
+            </Stack>
+          )
+          ) :
+          (<Typography>
+            there is no data </Typography>)}
         <ConditionalRendering />
       </>
     );

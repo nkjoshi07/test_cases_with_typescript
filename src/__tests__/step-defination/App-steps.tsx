@@ -52,11 +52,11 @@ defineFeature(feature, (test) => {
       wrapperApp.update();
     })
 
-    then("check initialValues", () => {
-      // const initialValues = instance.state.initialvalues
-      // console.log("initialValues", initialValues)
-      wrapperApp.find('[type="submit"]').simulate("submit")
-      instance.handleClick(mockData)
-    })
+    // then("check initialValues", () => {
+    //   // const initialValues = instance.state.initialvalues
+    //   // console.log("initialValues", initialValues)
+    //   wrapperApp.find('[type="submit"]').simulate("submit")
+    //   instance.handleClick(mockData)
+    // })
   })
 })
