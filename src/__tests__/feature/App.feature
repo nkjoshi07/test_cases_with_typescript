@@ -5,4 +5,3 @@ Feature: AppFeature
         Then cover handleClickFunc
         Then check initialvalues
         Then check emailInput
-        Then check initialValues
