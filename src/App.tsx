@@ -5,6 +5,9 @@ import { Box, Stack, TextField, Typography } from '@mui/material';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import * as yup from "yup"
 import ConditionalRendering from './ConditionalRendering';
+import Solve1 from './Solve1';
+import SpiralMatrix from './SpiralMatrix';
+import CombinationSum from './CombinationSum';
 
 
 interface iState {
@@ -64,28 +67,28 @@ class App extends React.Component<any, iState> {
           data-testid="formikTest"
           onSubmit={this.handleClick}>
           {/* {({ resetForm }) => ( */}
-            <Form>
-              <Stack justifyContent="center" alignItems="center" direction="column">
-                <Typography sx={{ textAlign: "center" }}>Login form</Typography>
-                <Stack justifyContent="center" alignItems="center" sx={{ my: 3 }} direction="row">
-                  <label htmlFor='email' id='email-label'>
-                    Email:
-                  </label>
-                  <Field name='email' id="input-email" type='email' />
-                  <ErrorMessage name='email' id='email-error' component="div" />
-                </Stack>
-                <Stack justifyContent="center" alignItems="center" sx={{ my: 3 }} direction="row">
-                  <label htmlFor='password' id='password-label'>
-                    password:
-                  </label>
-                  <Field name='password' id="input-password" type='password' />
-                  <ErrorMessage name='password' id='password-error' component="div" />
-                </Stack>
-                <Button id='submit' type='submit' variant="contained" color="primary">
-                  Save
-                </Button>
+          <Form>
+            <Stack justifyContent="center" alignItems="center" direction="column">
+              <Typography sx={{ textAlign: "center" }}>Login form</Typography>
+              <Stack justifyContent="center" alignItems="center" sx={{ my: 3 }} direction="row">
+                <label htmlFor='email' id='email-label'>
+                  Email:
+                </label>
+                <Field name='email' id="input-email" type='email' />
+                <ErrorMessage name='email' id='email-error' component="div" />
               </Stack>
-            </Form>
+              <Stack justifyContent="center" alignItems="center" sx={{ my: 3 }} direction="row">
+                <label htmlFor='password' id='password-label'>
+                  password:
+                </label>
+                <Field name='password' id="input-password" type='password' />
+                <ErrorMessage name='password' id='password-error' component="div" />
+              </Stack>
+              <Button id='submit' type='submit' variant="contained" color="primary">
+                Save
+              </Button>
+            </Stack>
+          </Form>
         </Formik>
         {this.state.loginData.length > 0 ?
           (this.state.loginData.map((login) =>
@@ -98,6 +101,9 @@ class App extends React.Component<any, iState> {
           (<Typography>
             there is no data </Typography>)}
         <ConditionalRendering />
+        <Solve1 />
+        <SpiralMatrix />
+        <CombinationSum />
       </>
     );
   }
