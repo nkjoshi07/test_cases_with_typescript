@@ -8,6 +8,7 @@ import ConditionalRendering from './ConditionalRendering';
 import Solve1 from './Solve1';
 import SpiralMatrix from './SpiralMatrix';
 import CombinationSum from './CombinationSum';
+import PelindromeNumber from './PelindromeNumber';
 
 
 interface iState {
@@ -104,6 +105,7 @@ class App extends React.Component<any, iState> {
         <Solve1 />
         <SpiralMatrix />
         <CombinationSum />
+        <PelindromeNumber />
       </>
     );
   }
